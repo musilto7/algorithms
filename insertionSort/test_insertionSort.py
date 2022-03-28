@@ -1,10 +1,13 @@
-from insertionSort import insertionSort
+from insertionSort import insertion_sort
+
 
 def test_empty():
-   assert [] == insertionSort([]) 
+    assert [] == insertion_sort([])
 
-def test_oneValue():
-    assert [1] == insertionSort([1])
 
-def test_multipleValues():
-    assert [1, 2, 3, 4, 5, 6, 7] == insertionSort([7, 6, 2, 1, 5, 4, 3])
+def test_one_value():
+    assert [1] == insertion_sort([1])
+
+
+def test_multiple_values():
+    assert [1, 2, 3, 4, 5, 6, 7] == insertion_sort([7, 6, 2, 1, 5, 4, 3])

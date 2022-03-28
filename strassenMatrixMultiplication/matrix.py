@@ -3,35 +3,36 @@ class Matrix:
         self.array = array
 
     def add(self, matrix):
-        rows = self._rows() 
-        columns = self._columns() 
-        newArray = [[0 for i in range(columns)] for j in range(rows)]
+        rows = self._rows()
+        columns = self._columns()
+        new_array = [[0 for i in range(columns)] for _ in range(rows)]
         for r in range(rows):
             for c in range(columns):
                 first = (self.array[r][c])
                 second = (matrix.array[r][c])
-                newArray[r][c] = first + second
-        return Matrix(newArray)
-        
+                new_array[r][c] = first + second
+        return Matrix(new_array)
+
     def quarter(self):
         rows = self._rows()
         if rows <= 1:
             raise Exception("Size of matrix has to be greater than 1")
-        middle = int(rows / 2) 
-        startSlice = slice(0, middle)
-        endSlice = slice(middle, rows)
-        return [self._one_quarter(startSlice, startSlice), self._one_quarter(startSlice, endSlice), self._one_quarter(endSlice, startSlice), self._one_quarter(endSlice, endSlice)]
+        middle = int(rows / 2)
+        start_slice = slice(0, middle)
+        end_slice = slice(middle, rows)
+        return [self._one_quarter(start_slice, start_slice), self._one_quarter(start_slice, end_slice),
+                self._one_quarter(end_slice, start_slice), self._one_quarter(end_slice, end_slice)]
 
-    def _one_quarter(self, rowSlice, columnSlice):
-        tempArray = self.array[rowSlice]
-        for rowIndex in range(len(tempArray)):
-            tempArray[rowIndex] = tempArray[rowIndex][columnSlice]
-            return Matrix(tempArray)
+    def _one_quarter(self, row_slice, column_slice):
+        temp_array = self.array[row_slice]
+        for rowIndex in range(len(temp_array)):
+            temp_array[rowIndex] = temp_array[rowIndex][column_slice]
+            return Matrix(temp_array)
 
-    def _concat_columns(self, m2):
-        rowRange = range(0, self._rows())
-        result = [[] for r in rowRange]
-        for r in rowRange:
+    def concat_columns(self, m2):
+        row_range = range(0, self._rows())
+        result = [[] for _ in row_range]
+        for r in row_range:
             result[r] = self.array[r] + m2.array[r]
         return Matrix(result)
 
@@ -41,5 +42,6 @@ class Matrix:
     def _columns(self):
         return len(self.array[0])
 
-def join_quarters(m1, m2, m3, m4):
-    return Matrix((m1._concat_columns(m2)).array + (m3._concat_columns(m4)).array)
+
+def _join_quarters(matrix1, matrix2, matrix3, matrix4):
+    return Matrix((matrix1.concat_columns(matrix2)).array + (matrix3.concat_columns(matrix4)).array)
