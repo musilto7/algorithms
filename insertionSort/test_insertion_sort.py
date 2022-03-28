@@ -1,4 +1,4 @@
-from insertionSort import insertion_sort
+from insertion_sort import insertion_sort
 
 
 def test_empty():

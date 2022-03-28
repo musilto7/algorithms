@@ -1,5 +1,5 @@
-from findMaxSubArray import find_max_crossing_sub_array
-from findMaxSubArray import find_max_sub_array
+from find_max_sub_array import find_max_crossing_sub_array
+from find_max_sub_array import find_max_sub_array
 import pytest
 
 
