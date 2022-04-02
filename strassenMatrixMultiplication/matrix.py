@@ -65,7 +65,7 @@ class Matrix:
         temp_array = self.array[row_slice]
         for rowIndex in range(len(temp_array)):
             temp_array[rowIndex] = temp_array[rowIndex][column_slice]
-            return Matrix(temp_array)
+        return Matrix(temp_array)
 
     def concat_columns(self, m2):
         row_range = range(0, self._rows())

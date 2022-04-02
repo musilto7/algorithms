@@ -25,6 +25,7 @@ def test_add_unit_matrix():
     matrix2 = Matrix([[2]])
     assert [[3]] == matrix1.add(matrix2).array
 
+
 def test_substract_unit_matrix():
     matrix1 = Matrix([[1]])
     matrix2 = Matrix([[2]])
@@ -53,14 +54,16 @@ def test_join_quarters():
     matrix4 = Matrix([[4]])
     assert [[1, 2], [3, 4]] == _join_quarters(matrix1, matrix2, matrix3, matrix4).array
 
+
 def test_multiply_trivial_matrix():
     matrix1 = Matrix([[2]])
     matrix2 = Matrix([[2]])
     assert matrix1.multiply(matrix2).array == [[4]]
 
+
 def test_multiply_non_trivial_matrix():
     matrix1 = Matrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
 
     matrix2 = Matrix([[2, 0, 0, 0], [0, 2, 0, 0], [0, 0, 2, 0], [0, 0, 0, 2]])
-    resultMatrix = matrix1.multiply(matrix2)
-    assert resultMatrix.array == [[2, 4, 6, 8], [10, 12, 14, 16], [18, 20, 22, 24], [26, 28, 30, 32]]
+    result_matrix = matrix1.multiply(matrix2)
+    assert result_matrix.array == [[2, 4, 6, 8], [10, 12, 14, 16], [18, 20, 22, 24], [26, 28, 30, 32]]
